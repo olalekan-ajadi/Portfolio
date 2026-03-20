@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Pretence | Olalekan Ajadi Portfolio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white font-sans selection:bg-emerald-100 selection:text-emerald-900" 
+      x-data="{ isScrolled: false }" 
+      @scroll.window="isScrolled = window.pageYOffset > 20">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300"
+         :class="isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-zinc-200 py-4' : 'bg-transparent py-6'">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="index.html" class="text-xl font-bold tracking-tighter text-zinc-900">
+                OLALEKAN<span class="text-emerald-600">.</span>
+            </a>
+            <a href="index.html#projects" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors flex items-center gap-2">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Projects
+            </a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <!-- Header -->
+            <div class="mb-16" data-aos="fade-up">
+                <div class="flex flex-wrap gap-3 mb-6">
+                    <span class="px-3 py-1 bg-zinc-100 text-zinc-600 text-xs font-bold uppercase tracking-widest rounded-full">Promotional</span>
+                    <span class="px-3 py-1 bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-widest rounded-full">Creative Project</span>
+                </div>
+                <h1 class="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight mb-6">Perfect Pretence</h1>
+                <p class="text-xl text-zinc-600 max-w-3xl leading-relaxed">
+                    A promotional website created for The Legit Fake Wedding Party, capturing the playful and stylish nature of the event while providing a smooth browsing experience.
+                </p>
+            </div>
+
+            <!-- Main Image -->
+            <div class="rounded-3xl overflow-hidden border border-zinc-200 shadow-2xl mb-20" data-aos="zoom-in">
+                <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fperfect-pretence.netlify.app%2F?w=1200&h=800" 
+                     alt="Perfect Pretence Main View" 
+                     class="w-full h-auto"
+                     referrerpolicy="no-referrer">
+            </div>
+
+            <!-- Details Grid -->
+            <div class="grid lg:grid-cols-3 gap-16">
+                <div class="lg:col-span-2 space-y-12" data-aos="fade-right">
+                    <section>
+                        <h2 class="text-2xl font-bold text-zinc-900 mb-6">Project Overview</h2>
+                        <div class="prose prose-zinc max-w-none text-zinc-600 space-y-4">
+                            <p>Perfect Pretence was a unique creative project designed to promote an unconventional event. The goal was to create a digital space that reflected the event's personality—playful, stylish, and slightly mysterious.</p>
+                            <p>The focus was on creating a high-impact visual experience with smooth transitions and a clean, modern aesthetic that would engage potential attendees and provide all the necessary event information in an easily digestible format.</p>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-zinc-900 mb-6">Key Features</h2>
+                        <ul class="grid md:grid-cols-2 gap-4">
+                            <li class="flex items-start gap-3 p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-zinc-900 block">Visual Storytelling</span>
+                                    <span class="text-sm text-zinc-500">Using high-quality imagery and typography to convey the event's theme.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-zinc-900 block">Smooth Transitions</span>
+                                    <span class="text-sm text-zinc-500">Fluid animations that enhance the browsing experience.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-zinc-900 block">Responsive Design</span>
+                                    <span class="text-sm text-zinc-500">Optimized for all devices, from smartphones to large desktops.</span>
+                                </div>
+                            </li>
+                            <li class="flex items-start gap-3 p-4 rounded-2xl bg-zinc-50 border border-zinc-100">
+                                <i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 mt-0.5"></i>
+                                <div>
+                                    <span class="font-bold text-zinc-900 block">Event Information</span>
+                                    <span class="text-sm text-zinc-500">Clear and concise presentation of date, time, and location details.</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                </div>
+
+                <div class="space-y-10" data-aos="fade-left">
+                    <div class="p-8 rounded-3xl bg-zinc-900 text-white">
+                        <h3 class="text-lg font-bold mb-6">Tech Stack</h3>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono">HTML</span>
+                            <span class="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono">CSS</span>
+                            <span class="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono">JavaScript</span>
+                            <span class="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono">Responsive Design</span>
+                            <span class="px-3 py-1 bg-zinc-800 rounded-full text-xs font-mono">Netlify</span>
+                        </div>
+                        <div class="mt-10 space-y-4">
+                            <a href="https://perfect-pretence.netlify.app/" target="_blank" class="flex items-center justify-center gap-2 w-full py-4 bg-white text-zinc-900 rounded-xl font-bold hover:bg-zinc-100 transition-all">
+                                Live Demo <i data-lucide="external-link" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="p-8 rounded-3xl border border-zinc-200">
+                        <h3 class="text-lg font-bold text-zinc-900 mb-4">Role</h3>
+                        <p class="text-zinc-600 text-sm mb-6">Frontend Developer & Designer</p>
+                        <h3 class="text-lg font-bold text-zinc-900 mb-4">Timeline</h3>
+                        <p class="text-zinc-600 text-sm">2 Weeks (2025)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="py-12 border-t border-zinc-100">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-zinc-400 text-sm">
+                © <span id="year"></span> Olalekan Ajadi.
+            </div>
+            <div class="flex items-center gap-8">
+                <a href="https://github.com/olalekan-ajadi" target="_blank" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+        AOS.init({ once: true, duration: 800 });
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

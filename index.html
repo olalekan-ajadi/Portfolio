@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olalekan Ajadi | Full-Stack Developer & Designer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Alpine.js -->
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- AOS (Animate on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @media print {
+            body { background: white; color: black; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .no-print { display: none !important; }
+            .print-only { display: block !important; }
+            @page { margin: 2cm; }
+        }
+        @media screen {
+            .print-only { display: none !important; }
+        }
+        [x-cloak] { display: none !important; }
+    </style>
+</head>
+<body class="bg-white font-sans selection:bg-emerald-100 selection:text-emerald-900" 
+      x-data="{ isScrolled: false, mobileMenu: false }" 
+      @scroll.window="isScrolled = window.pageYOffset > 20">
+
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 transition-all duration-300 no-print"
+         :class="isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-zinc-200 py-4' : 'bg-transparent py-6'">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold tracking-tighter text-zinc-900">
+                OLALEKAN<span class="text-emerald-600">.</span>
+            </a>
+
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#about" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">About</a>
+                <a href="#projects" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">Projects</a>
+                <a href="#skills" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">Skills</a>
+                <a href="#contact" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">Contact</a>
+                <button @click="window.print()" class="bg-zinc-900 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-zinc-800 transition-all shadow-md active:scale-95">
+                    Resume
+                </button>
+            </div>
+
+            <!-- Mobile Toggle -->
+            <button class="md:hidden text-zinc-900" @click="mobileMenu = !mobileMenu">
+                <i data-lucide="menu" x-show="!mobileMenu"></i>
+                <i data-lucide="x" x-show="mobileMenu" x-cloak></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" 
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-4"
+             class="md:hidden bg-white border-b border-zinc-200 overflow-hidden" x-cloak>
+            <div class="flex flex-col p-6 gap-4">
+                <a href="#about" @click="mobileMenu = false" class="text-lg font-medium text-zinc-600">About</a>
+                <a href="#projects" @click="mobileMenu = false" class="text-lg font-medium text-zinc-600">Projects</a>
+                <a href="#skills" @click="mobileMenu = false" class="text-lg font-medium text-zinc-600">Skills</a>
+                <a href="#contact" @click="mobileMenu = false" class="text-lg font-medium text-zinc-600">Contact</a>
+                <button @click="window.print()" class="bg-zinc-900 text-white px-5 py-3 rounded-xl text-center font-medium">
+                    Download Resume
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="no-print">
+        <!-- Hero -->
+        <section id="about" class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div data-aos="fade-up" data-aos-duration="800">
+                        <span class="inline-block px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-emerald-700 uppercase bg-emerald-50 rounded-full border border-emerald-100">
+                            Full-Stack Developer & Designer
+                        </span>
+                        <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-zinc-900 leading-[1.1] mb-8">
+                            Olalekan <br />
+                            <span class="text-zinc-400">Ajadi.</span>
+                        </h1>
+                        <p class="text-lg text-zinc-600 max-w-lg mb-10 leading-relaxed">
+                            I focus on building practical digital solutions that help businesses operate more efficiently and grow online. I specialize in creating modern web applications and visually engaging digital experiences.
+                        </p>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#projects" class="bg-zinc-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-zinc-800 transition-all flex items-center gap-2 group">
+                                View Projects
+                                <i data-lucide="chevron-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                            <div class="flex items-center gap-4 px-4">
+                                <a href="https://github.com/olalekan-ajadi" target="_blank" class="p-2 text-zinc-400 hover:text-zinc-900 transition-colors"><i data-lucide="github" class="w-6 h-6"></i></a>
+                                <a href="#" class="p-2 text-zinc-400 hover:text-zinc-900 transition-colors"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                                <a href="mailto:olalekannurudeen0@gmail.com" class="p-2 text-zinc-400 hover:text-zinc-900 transition-colors"><i data-lucide="mail" class="w-6 h-6"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative hidden lg:block" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="200">
+                        <div class="aspect-square rounded-3xl bg-zinc-100 overflow-hidden relative group">
+                            <img src="https://picsum.photos/seed/profile/800/800" alt="Profile" 
+                                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                                 referrerpolicy="no-referrer">
+                            <div class="absolute inset-0 border-[1px] border-zinc-900/10 rounded-3xl pointer-events-none"></div>
+                        </div>
+                        <div class="absolute -top-6 -right-6 w-24 h-24 bg-emerald-100 rounded-full blur-3xl opacity-60"></div>
+                        <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-zinc-200 rounded-full blur-3xl opacity-40"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects -->
+        <section id="projects" class="py-24 bg-zinc-50">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                    <div data-aos="fade-right">
+                        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-4 tracking-tight">Selected Works</h2>
+                        <p class="text-zinc-600 max-w-md">A collection of projects that demonstrate my technical skills and design philosophy.</p>
+                    </div>
+                    <a href="#" class="text-sm font-bold text-zinc-900 flex items-center gap-2 hover:underline" data-aos="fade-left">
+                        View all projects <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Project 1 -->
+                    <div class="group bg-white rounded-2xl overflow-hidden border border-zinc-200 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
+                        <a href="selli.html" class="aspect-[4/3] overflow-hidden relative block">
+                            <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Folalekan-ajadi.github.io%2FSelli%2F?w=800&h=600" alt="Selli"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 referrerpolicy="no-referrer">
+                            <div class="absolute inset-0 bg-zinc-900/0 group-hover:bg-zinc-900/10 transition-colors duration-500"></div>
+                        </a>
+                        <div class="p-8">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 border border-zinc-200 px-2 py-0.5 rounded">React</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 border border-zinc-200 px-2 py-0.5 rounded">Node.js</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                                <a href="selli.html">Selli – High-End E-Commerce</a>
+                            </h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">A modern e-commerce platform built for a luxury fashion brand, delivering a seamless online shopping experience.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="selli.html" class="text-sm font-bold text-zinc-900 flex items-center gap-1.5 hover:underline">
+                                    View Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </a>
+                                <a href="https://olalekan-ajadi.github.io/Selli/" target="_blank" class="text-sm font-bold text-zinc-500 flex items-center gap-1.5 hover:text-zinc-900 transition-colors">
+                                    Live Demo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="group bg-white rounded-2xl overflow-hidden border border-zinc-200 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
+                        <a href="nexus.html" class="aspect-[4/3] overflow-hidden relative block">
+                            <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Folalekan-ajadi.github.io%2Fnexus%2F?w=800&h=600" alt="Nexus"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 referrerpolicy="no-referrer">
+                            <div class="absolute inset-0 bg-zinc-900/0 group-hover:bg-zinc-900/10 transition-colors duration-500"></div>
+                        </a>
+                        <div class="p-8">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 border border-zinc-200 px-2 py-0.5 rounded">React</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 border border-zinc-200 px-2 py-0.5 rounded">PostgreSQL</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                                <a href="nexus.html">Nexus Academy – E-Learning</a>
+                            </h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">A comprehensive e-learning management system designed to support online education and course delivery.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="nexus.html" class="text-sm font-bold text-zinc-900 flex items-center gap-1.5 hover:underline">
+                                    View Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </a>
+                                <a href="https://olalekan-ajadi.github.io/nexus/" target="_blank" class="text-sm font-bold text-zinc-500 flex items-center gap-1.5 hover:text-zinc-900 transition-colors">
+                                    Live Demo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="group bg-white rounded-2xl overflow-hidden border border-zinc-200 hover:shadow-xl hover:shadow-zinc-200/50 transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
+                        <a href="perfect-pretence.html" class="aspect-[4/3] overflow-hidden relative block">
+                            <img src="https://s.wordpress.com/mshots/v1/https%3A%2F%2Fperfect-pretence.netlify.app%2F?w=800&h=600" alt="Perfect Pretence"
+                                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                                 referrerpolicy="no-referrer">
+                            <div class="absolute inset-0 bg-zinc-900/0 group-hover:bg-zinc-900/10 transition-colors duration-500"></div>
+                        </a>
+                        <div class="p-8">
+                            <div class="flex flex-wrap gap-2 mb-4">
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 border border-zinc-200 px-2 py-0.5 rounded">HTML</span>
+                                <span class="text-[10px] font-bold uppercase tracking-wider text-zinc-400 border border-zinc-200 px-2 py-0.5 rounded">JavaScript</span>
+                            </div>
+                            <h3 class="text-xl font-bold text-zinc-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                                <a href="perfect-pretence.html">Perfect Pretence</a>
+                            </h3>
+                            <p class="text-zinc-600 text-sm leading-relaxed mb-6">A promotional website created for The Legit Fake Wedding Party, capturing the playful and stylish nature of the event.</p>
+                            <div class="flex items-center gap-4">
+                                <a href="perfect-pretence.html" class="text-sm font-bold text-zinc-900 flex items-center gap-1.5 hover:underline">
+                                    View Details <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                                </a>
+                                <a href="https://perfect-pretence.netlify.app/" target="_blank" class="text-sm font-bold text-zinc-500 flex items-center gap-1.5 hover:text-zinc-900 transition-colors">
+                                    Live Demo <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="py-24">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div data-aos="fade-right">
+                        <h2 class="text-3xl md:text-4xl font-bold text-zinc-900 mb-8 tracking-tight">Technical Expertise</h2>
+                        <p class="text-zinc-600 text-lg mb-12 leading-relaxed">
+                            My work combines both design and development, allowing me to create products that are not only reliable and scalable on the backend but also clean, intuitive, and user-friendly on the frontend.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-6">
+                            <div class="flex items-start gap-4 p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50">
+                                <div class="p-2.5 bg-white rounded-xl shadow-sm border border-zinc-100 text-emerald-600">
+                                    <i data-lucide="code-2" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900 text-sm">Frontend Development</h4>
+                                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-wider font-medium">Development</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50">
+                                <div class="p-2.5 bg-white rounded-xl shadow-sm border border-zinc-100 text-emerald-600">
+                                    <i data-lucide="palette" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900 text-sm">UI/UX Design</h4>
+                                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-wider font-medium">Design</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50">
+                                <div class="p-2.5 bg-white rounded-xl shadow-sm border border-zinc-100 text-emerald-600">
+                                    <i data-lucide="terminal" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900 text-sm">Backend Systems</h4>
+                                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-wider font-medium">Development</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-4 p-4 rounded-2xl border border-zinc-100 bg-zinc-50/50">
+                                <div class="p-2.5 bg-white rounded-xl shadow-sm border border-zinc-100 text-emerald-600">
+                                    <i data-lucide="cpu" class="w-5 h-5"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-zinc-900 text-sm">Cloud Infrastructure</h4>
+                                    <p class="text-zinc-500 text-xs mt-1 uppercase tracking-wider font-medium">Infrastructure</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative" data-aos="fade-left">
+                        <div class="bg-zinc-900 rounded-3xl p-8 md:p-12 text-white overflow-hidden relative">
+                            <div class="relative z-10">
+                                <h3 class="text-2xl font-bold mb-6">Current Focus</h3>
+                                <div class="space-y-6">
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-2">
+                                            <span class="font-medium text-zinc-400">React Ecosystem</span>
+                                            <span class="font-mono text-emerald-400">95%</span>
+                                        </div>
+                                        <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 transition-all duration-1000" style="width: 95%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-2">
+                                            <span class="font-medium text-zinc-400">Node.js & Express</span>
+                                            <span class="font-mono text-emerald-400">90%</span>
+                                        </div>
+                                        <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 transition-all duration-1000" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-2">
+                                            <span class="font-medium text-zinc-400">PostgreSQL & Databases</span>
+                                            <span class="font-mono text-emerald-400">85%</span>
+                                        </div>
+                                        <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 transition-all duration-1000" style="width: 85%"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="flex justify-between text-sm mb-2">
+                                            <span class="font-medium text-zinc-400">UI/UX & Design</span>
+                                            <span class="font-mono text-emerald-400">90%</span>
+                                        </div>
+                                        <div class="h-1.5 w-full bg-zinc-800 rounded-full overflow-hidden">
+                                            <div class="h-full bg-emerald-500 transition-all duration-1000" style="width: 90%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
+                                <div class="absolute inset-0 bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="py-24 bg-zinc-900 text-white overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+                <div class="max-w-3xl mx-auto text-center" data-aos="zoom-out">
+                    <h2 class="text-4xl md:text-6xl font-bold tracking-tight mb-8">Let's build something <br /> extraordinary.</h2>
+                    <p class="text-zinc-400 text-lg mb-12">
+                        Whether you have a specific project in mind or just want to chat about 
+                        the latest in tech, I'm always open to new connections.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <a href="mailto:olalekannurudeen0@gmail.com" 
+                           class="w-full sm:w-auto bg-white text-zinc-900 px-10 py-5 rounded-full font-bold hover:bg-zinc-100 transition-all flex items-center justify-center gap-3 group">
+                            Get in touch
+                            <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+                        </a>
+                        <button @click="window.print()" class="w-full sm:w-auto border border-zinc-700 text-white px-10 py-5 rounded-full font-bold hover:bg-zinc-800 transition-all flex items-center justify-center gap-3">
+                            Download CV
+                            <i data-lucide="download" class="w-5 h-5"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+        </section>
+    </main>
+
+    <!-- Print CV -->
+    <div class="print-only p-8 text-zinc-900 font-sans">
+        <div class="flex justify-between items-start border-b-2 border-zinc-900 pb-8 mb-8">
+            <div>
+                <h1 class="text-4xl font-bold tracking-tighter mb-2 text-zinc-900">OLALEKAN AJADI</h1>
+                <p class="text-xl text-zinc-600 font-medium">Full-Stack Developer & Designer</p>
+            </div>
+            <div class="text-right text-sm space-y-1">
+                <p>olalekannurudeen0@gmail.com</p>
+                <p>github.com/olalekan-ajadi</p>
+                <p>Lagos, Nigeria</p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-12">
+            <div class="col-span-2 space-y-8">
+                <section>
+                    <h2 class="text-lg font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Profile</h2>
+                    <p class="text-zinc-700 leading-relaxed">
+                        Full-Stack Developer and Designer focused on building practical digital solutions that help businesses operate more efficiently and grow online. Specializing in modern web applications and visually engaging digital experiences.
+                    </p>
+                </section>
+
+                <section>
+                    <h2 class="text-lg font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Selected Projects</h2>
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-bold text-lg">Selli – High-End E-Commerce</h3>
+                            <p class="text-sm text-zinc-500 mb-2">React • Node.js • Express • PostgreSQL • Cloudinary</p>
+                            <p class="text-zinc-700 text-sm">A modern e-commerce platform built for a luxury fashion brand, delivering a seamless online shopping experience with backend tools for inventory and orders.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Nexus Academy – E-Learning</h3>
+                            <p class="text-sm text-zinc-500 mb-2">React • Node.js • Express • PostgreSQL • REST APIs</p>
+                            <p class="text-zinc-700 text-sm">A comprehensive e-learning management system designed to support online education, course delivery, and student progress tracking.</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg">Perfect Pretence</h3>
+                            <p class="text-sm text-zinc-500 mb-2">HTML • CSS • JavaScript • Responsive Design</p>
+                            <p class="text-zinc-700 text-sm">A promotional website created for The Legit Fake Wedding Party, capturing the playful and stylish nature of the event while providing a smooth browsing experience.</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="space-y-8">
+                <section>
+                    <h2 class="text-lg font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Skills</h2>
+                    <div class="space-y-4">
+                        <div class="text-sm text-zinc-700 font-medium">• React & TypeScript</div>
+                        <div class="text-sm text-zinc-700 font-medium">• Node.js & Express</div>
+                        <div class="text-sm text-zinc-700 font-medium">• PostgreSQL</div>
+                        <div class="text-sm text-zinc-700 font-medium">• UI/UX Design</div>
+                        <div class="text-sm text-zinc-700 font-medium">• REST APIs</div>
+                        <div class="text-sm text-zinc-700 font-medium">• Responsive Design</div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2 class="text-lg font-bold uppercase tracking-widest border-b border-zinc-200 pb-2 mb-4">Education</h2>
+                    <div>
+                        <h3 class="font-bold text-sm">Relevant Coursework</h3>
+                        <p class="text-xs text-zinc-500">Full-Stack Web Development, UI/UX Design Principles</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 border-t border-zinc-100 no-print">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-zinc-400 text-sm">
+                © <span id="year"></span> Olalekan Ajadi. Built with precision.
+            </div>
+            <div class="flex items-center gap-8">
+                <a href="#" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">LinkedIn</a>
+                <a href="https://github.com/olalekan-ajadi" target="_blank" class="text-sm font-medium text-zinc-600 hover:text-zinc-900 transition-colors">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Initialize AOS
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic'
+        });
+
+        // Set current year
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
